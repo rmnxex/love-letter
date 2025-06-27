@@ -50,6 +50,13 @@
       50% { opacity: 1; }
       100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
     }
+    .fade-in-text {
+      animation: fadeIn 3s ease-in forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body class="bg-pink-50 text-gray-800 relative">
@@ -65,15 +72,15 @@
 
   <!-- Slide 1: Landing Page -->
   <section id="slide1" class="slide active h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-rose-100 to-white">
-    <h1 class="text-5xl font-extrabold text-rose-600">To My Dearest Elin</h1>
-    <p class="mt-3 text-xl italic text-gray-600">“Every word is a whisper from my heart to yours.”</p>
+    <h1 class="text-5xl font-extrabold text-rose-600 fade-in-text">To My Dearest Elin</h1>
+    <p class="mt-3 text-xl italic text-gray-600 fade-in-text">“Every word is a whisper from my heart to yours.”</p>
     <button onclick="nextSlide()" class="mt-6 px-6 py-2 bg-pink-400 hover:bg-pink-500 text-white text-lg rounded-full shadow-lg">Read Letter</button>
   </section>
 
   <!-- Slide 2: Love Letter -->
   <section id="slide2" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
     <h2 class="text-4xl font-bold text-rose-500">Dear Love,</h2>
-    <p id="letterText" class="mt-6 max-w-xl text-lg leading-relaxed text-gray-700">
+    <p id="letterText" class="mt-6 max-w-xl text-lg leading-relaxed text-gray-700 fade-in-text">
       Since I met you, life feels warmer and lighter. Time slows when you're near, and my heart speaks only your name. You are my always. I know lately we've been fighting a lot, but I just wanted to let you know that I will have you in my heart always. I'm jealous sometimes that aku gabisa bikin kamu seneng kaya kamu sama temen-temen kamu. I hope someday I find a way to make you laugh more often and feel sad less.
     </p>
     <div class="mt-8 flex flex-col items-center">
@@ -86,7 +93,7 @@
   </section>
 
   <!-- Slide 3: Photo Gallery -->
-  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto">
+  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
     <div class="mt-12">
       <h2 class="text-4xl font-bold text-rose-500 mb-6">Our Memories 📸</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
@@ -111,7 +118,26 @@
     </div>
   </section>
 
-  <!-- Slide 4: Closing with Reply Box -->
+  <!-- Slide 4: Love Story Timeline -->
+  <section id="slide4" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
+    <h2 class="text-4xl font-bold text-rose-500 mb-6">Our Love Story Timeline ❤️</h2>
+    <div class="relative w-full max-w-2xl">
+      <div class="border-l-4 border-pink-300 pl-6">
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold text-pink-600">12th April 2025</h3>
+          <p class="text-gray-700">The first time we ever talked — shy smiles, awkward laughs, and a moment that quietly changed everything. 💬</p>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold text-pink-600">27th April 2025</h3>
+          <p class="text-gray-700">The day we became boyfriend and girlfriend — a promise of love, joy, and endless memories to come. 💖</p>
+        </div>
+        <!-- You can add more timeline items here -->
+      </div>
+    </div>
+    <button onclick="nextSlide()" class="mt-8 px-6 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-full shadow-md">Next</button>
+  </section>
+
+  <!-- Slide 5: Closing with Reply Box -->
   <section id="slide4" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-rose-100 to-white">
     <h2 class="text-4xl font-bold text-rose-600">Forever Yours 💌</h2>
     <p class="mt-3 text-lg text-gray-700">This isn't the end, just a pause in our love story. Until we write again.</p>
