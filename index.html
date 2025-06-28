@@ -1,73 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Love Letters</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Georgia', serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .slide { display: none; }
-    .slide.active { display: flex; }
-    .love-decor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
+  .fade-in-text {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  body {
+    font-family: 'Great Vibes', cursive;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Great Vibes', cursive;
+  }
+  p, button, input, textarea, label {
+    font-family: 'Quicksand', sans-serif;
+  }
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #f472b6;
-      transform: rotate(45deg);
-      animation: float 6s infinite ease-in;
-      opacity: 0.4;
-    }
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #f472b6;
+      width: 30px;
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22pink%22><path d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/></svg>'); background-repeat: no-repeat; background-size: contain;
+      animation: float 8s linear infinite;
       border-radius: 50%;
     }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
     @keyframes float {
-      0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+      0% { transform: translateY(100vh); opacity: 0; }
       50% { opacity: 1; }
-      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+      100% { transform: translateY(-10vh); opacity: 0; }
     }
-    .fade-in-text {
-      animation: fadeIn 3s ease-in forwards;
-      opacity: 0;
+    .fade-out {
+      animation: fadeOut 1s forwards;
     }
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes fadeOut {
+      to { opacity: 0; }
     }
-  </style>
+    .slide {
+      transition: opacity 0.8s ease-in-out;
+    }
+    .slide:not(.active) {
+      display: none;
+    }
+</style>
 </head>
-<body class="bg-pink-50 text-gray-800 relative">
+<body class="font-[Great_Vibes] bg-pink-50 text-gray-800 relative">
+  <div id="passwordOverlay" class="fixed inset-0 bg-pink-50 z-50 flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-lg relative w-80 transform transition duration-500 ease-in-out">
+    <div class="w-full h-40 bg-pink-200 rounded-t-md flex items-center justify-center">
+      <svg class="w-16 h-16 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2.94 6.94a1.5 1.5 0 012.12 0L10 11.88l4.94-4.94a1.5 1.5 0 112.12 2.12l-6 6a1.5 1.5 0 01-2.12 0l-6-6a1.5 1.5 0 010-2.12z"/>
+      </svg>
+    </div>
+    <div class="text-center mt-4">
+      <h2 class="text-xl font-semibold text-rose-600">Open Your Love Letter 💌</h2>
+      <p class="text-sm text-gray-500">Clue: my fav person in the whole world</p>
+      <input type="password" id="passwordInput" placeholder="Type here..." class="mt-3 p-2 w-full rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400">
+      <button onclick="checkPassword()" class="mt-4 px-6 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-full shadow-md animate-pulse">Open Envelope</button>
+      <p id="passwordError" class="text-sm text-red-500 mt-2 hidden">Wrong password. Try again!</p>
+    </div>
+  </div>
+</div>
+  </div>
   <audio id="romanticMusic" src="elin/Blessed.mp3" loop></audio>
 
   <div class="love-decor">
@@ -86,7 +87,7 @@
   </section>
 
   <!-- Slide 2: Love Letter -->
-  <section id="slide2" class="slide min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
+  <section id="slide2" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
     <h2 class="text-4xl font-bold text-rose-500">Dear Love,</h2>
     <p id="letterText" class="mt-6 max-w-xl text-lg leading-relaxed text-gray-700 fade-in-text">
       Since I met you, life feels warmer and lighter. Time slows when you're near, and my heart speaks only your name. You are my always. I know lately we've been fighting a lot, but I just wanted to let you know that I will have you in my heart always. I'm jealous sometimes that aku gabisa bikin kamu seneng kaya kamu sama temen-temen kamu. I hope someday I find a way to make you laugh more often and feel sad less.
@@ -101,24 +102,25 @@
   </section>
 
   <!-- Slide 3: Photo Gallery -->
-  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20 pb-20">
+  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
     <div class="mt-12">
       <h2 class="text-4xl font-bold text-rose-500 mb-6">Our Memories 📸</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl w-full px-4">
-        <div class="flex flex-col items-center">
-        <img src="elin/9ea425ed-c303-44c8-b93f-1c6316870e62.jpg" class="rounded-lg shadow-md" alt="Her beautiful look">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
+        <!-- Existing images here -->
+         <div class="flex flex-col items-center">
+        <img src="elin/9ea425ed-c303-44c8-b93f-1c6316870e62.jpg" class="rounded-lg shadow-md object-cover w-60 h-60" alt="Her beautiful look">
         <p class="mt-2 text-sm text-gray-600">She looks so elegant with her glasses and that calm expression—pure beauty. 💖</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/94130034-19cd-4c94-bb0d-e9aa0d46cbff.jpg" class="rounded-lg shadow-md" alt="Her playful tongue-out pose">
+        <img src="elin/94130034-19cd-4c94-bb0d-e9aa0d46cbff.jpg" class="rounded-lg shadow-md object-cover w-60 h-60" alt="Her playful tongue-out pose">
         <p class="mt-2 text-sm text-gray-600">Even being silly, she manages to be absolutely adorable. 🥺</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/98c60225-37e4-4ef8-9480-133935950efc.jpg" class="rounded-lg shadow-md" alt="Her playful look in the car">
+        <img src="elin/98c60225-37e4-4ef8-9480-133935950efc.jpg" class="rounded-lg shadow-md object-cover w-60 h-60" alt="Her playful look in the car">
         <p class="mt-2 text-sm text-gray-600">This playful moment captured her beauty and fun spirit perfectly. 😘</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/IMG_0023.png" class="rounded-lg shadow-md" alt="Her glowing and sweet face">
+        <img src="elin/IMG_0023.png" class="rounded-lg shadow-md object-cover w-60 h-60" alt="Her glowing and sweet face">
         <p class="mt-2 text-sm text-gray-600">Look how bright she shines with that soft glow and lovely smile. 💕</p>
       </div>
       </div>
@@ -127,7 +129,7 @@
   </section>
 
   <!-- Slide 4: Love Story Timeline -->
-  <section id="slide4" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
+  <section id="slide5" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
     <h2 class="text-4xl font-bold text-rose-500 mb-6">Our Love Story Timeline ❤️</h2>
     <div class="relative w-full max-w-2xl">
       <div class="border-l-4 border-pink-300 pl-6">
@@ -139,10 +141,6 @@
           <h3 class="text-2xl font-semibold text-pink-600">27th April 2025</h3>
           <p class="text-gray-700">The day we became boyfriend and girlfriend — a promise of love, joy, and endless memories to come. 💖</p>
         </div>
-        <div class="mb-8">
-          <h3 class="text-2xl font-semibold text-pink-600">27th June 2025</h3>
-          <p class="text-gray-700">Today is the day we exactly 2 months after the first time we finally become boyfriend and girlfriend — a promise that we always keep forever and ever 💕</p>
-        </div>
         <!-- You can add more timeline items here -->
       </div>
     </div>
@@ -150,7 +148,7 @@
   </section>
 
   <!-- Slide 5: Closing with Reply Box -->
-  <section id="slide4" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-rose-100 to-white">
+  <section id="slide6" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-rose-100 to-white">
     <h2 class="text-4xl font-bold text-rose-600">Forever Yours 💌</h2>
     <p class="mt-3 text-lg text-gray-700">This isn't the end, just a pause in our love story. Until we write again.</p>
 
@@ -205,6 +203,19 @@
         }
       }, { once: true });
     });
-  </script>
+    window.checkPassword = function () {
+    const input = document.getElementById('passwordInput').value;
+    const error = document.getElementById('passwordError');
+    if (input === 'elin') {
+      document.getElementById('passwordOverlay').classList.add('fade-out');
+      setTimeout(() => document.getElementById('passwordOverlay').remove(), 1000);
+      const audio = document.getElementById('romanticMusic');
+      audio.volume = 0.5;
+      audio.play();
+    } else {
+      error.classList.remove('hidden');
+    }
+  };
+</script>
 </body>
 </html>
