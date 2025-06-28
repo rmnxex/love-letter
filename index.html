@@ -24,16 +24,8 @@
   p, button, input, textarea, label {
     font-family: 'Quicksand', sans-serif;
   }
-    .heart {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22pink%22><path d=%22M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z%22/></svg>'); background-repeat: no-repeat; background-size: contain;
-      animation: float 8s linear infinite;
-      border-radius: 50%;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh); opacity: 0; }
+    
+    
       50% { opacity: 1; }
       100% { transform: translateY(-10vh); opacity: 0; }
     }
@@ -49,6 +41,20 @@
     .slide:not(.active) {
       display: none;
     }
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    animation: float 12s ease-in-out infinite;
+    font-size: 20px;
+    z-index: 0;
+  }
+  @keyframes float {
+    0% { transform: translateY(0); opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+  }
 </style>
 </head>
 <body class="font-[Great_Vibes] bg-pink-50 text-gray-800 relative">
@@ -71,9 +77,8 @@
   </div>
   <audio id="romanticMusic" src="elin/Blessed.mp3" loop></audio>
 
-  <div class="love-decor">
-    <div class="heart" style="left: 5%; animation-delay: 0s;"></div>
-    <div class="heart" style="left: 20%; animation-delay: 2s;"></div>
+  
+    
     <div class="heart" style="left: 40%; animation-delay: 4s;"></div>
     <div class="heart" style="left: 60%; animation-delay: 1s;"></div>
     <div class="heart" style="left: 80%; animation-delay: 3s;"></div>
@@ -102,25 +107,26 @@
   </section>
 
   <!-- Slide 3: Photo Gallery -->
-  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100 overflow-y-auto pt-20">
+  <section id="slide3" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
+
     <div class="mt-12">
       <h2 class="text-4xl font-bold text-rose-500 mb-6">Our Memories 📸</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
         <!-- Existing images here -->
          <div class="flex flex-col items-center">
-        <img src="elin/9ea425ed-c303-44c8-b93f-1c6316870e62.jpg" class="rounded-lg shadow-md object-cover w-60 h-65" alt="Her beautiful look">
+        <img src="elin/9ea425ed-c303-44c8-b93f-1c6316870e62.jpg" class="rounded-lg shadow-md object-cover w-60 h-60 transition-transform transform hover:scale-105 border-2 border-pink-300" alt="Her beautiful look">
         <p class="mt-2 text-sm text-gray-600">She looks so elegant with her glasses and that calm expression—pure beauty. 💖</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/94130034-19cd-4c94-bb0d-e9aa0d46cbff.jpg" class="rounded-lg shadow-md object-cover w-60 h-65" alt="Her playful tongue-out pose">
+        <img src="elin/94130034-19cd-4c94-bb0d-e9aa0d46cbff.jpg" class="rounded-lg shadow-md object-cover w-60 h-60" alt="Her playful tongue-out pose">
         <p class="mt-2 text-sm text-gray-600">Even being silly, she manages to be absolutely adorable. 🥺</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/98c60225-37e4-4ef8-9480-133935950efc.jpg" class="rounded-lg shadow-md object-cover w-60 h-65" alt="Her playful look in the car">
+        <img src="elin/98c60225-37e4-4ef8-9480-133935950efc.jpg" class="rounded-lg shadow-md" alt="Her playful look in the car">
         <p class="mt-2 text-sm text-gray-600">This playful moment captured her beauty and fun spirit perfectly. 😘</p>
       </div>
       <div class="flex flex-col items-center">
-        <img src="elin/IMG_0023.png" class="rounded-lg shadow-md object-cover w-60 h-65" alt="Her glowing and sweet face">
+        <img src="elin/IMG_0023.png" class="rounded-lg shadow-md" alt="Her glowing and sweet face">
         <p class="mt-2 text-sm text-gray-600">Look how bright she shines with that soft glow and lovely smile. 💕</p>
       </div>
       </div>
@@ -217,5 +223,10 @@
     }
   };
 </script>
+  <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+  <div class="heart" style="left: 30%; animation-delay: 2s;">❤️</div>
+  <div class="heart" style="left: 50%; animation-delay: 4s;">❤️</div>
+  <div class="heart" style="left: 70%; animation-delay: 1s;">❤️</div>
+  <div class="heart" style="left: 90%; animation-delay: 3s;">❤️</div>
 </body>
 </html>
