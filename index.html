@@ -152,6 +152,46 @@
     </div>
     <button onclick="nextSlide()" class="mt-8 px-6 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-full shadow-md">Next</button>
   </section>
+
+  <!-- Voice Letter Slide -->
+<section id="slide5" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
+  <h2 class="text-4xl font-bold text-rose-600 mb-4">A Letter from My Heart 💞</h2>
+
+  <button onclick="playVoiceNote()" class="px-6 py-3 bg-pink-400 hover:bg-pink-500 text-white rounded-full shadow-md">
+    ▶️ Play Voice Letter
+  </button>
+  <audio id="voiceNote" src="elin/my-voice-note.mp3"></audio>
+
+  <!-- Subtitle -->
+<div id="subtitleBox" class="mt-8 max-w-3xl text-base sm:text-lg text-gray-700 font-[Quicksand] leading-relaxed opacity-0 transition-opacity duration-1000 space-y-2">
+  <p>Hi, Elin... I just wanted to say thank you.</p>
+  <p>Gara gara kamu udah mau sabar banget sama aku, sometimes i just wanna thank god for bringing you into my life.</p>
+  <p>Aku sayang banget sama kamu, sumpah Elin. I hope we can be like this forever. Aku nggak mau kehilangan kamu, bahkan cuma untuk satu detik.</p>
+  <p>Kadang aku bingung gimana caranya biar kamu tau... seberapa besar sayang aku ke kamu.</p>
+  <p>Kita kadang ada ribut gajelas marah marahan gajelas yang ngebuat hubungan kita makin kuat (semoga)</p>
+  <p>Satu hal yang aku tau pasti: aku nggak akan pernah raguin perasaan aku ke kamu.</p>
+  <p>Semua hal kecil yang kamu lakuin it's a miracle from god. Your voice, Your giggles, Your voice when you call me baby.</p>
+  <p>I may not be perfect. Tapi aku janji, aku bakal selalu berusaha jadi yang terbaik buat kamu.</p>
+  <p>Aku bakal selalu ada kalo kamu sedihh, kalo kamu seneng meskipun dari jauh.</p>
+  <p>Kamu bukan sekedar pacar aku elin, You're my peace, My safest place tempat dimana aku bisa jadi diri aku sendiri.</p>
+  <p>Apapun yang terjadi, aku pengen kamu inget: my voice, my heart — will always have your name written inside.</p>
+  <p>I love you. I really do. Always.</p>
+</div>
+
+
+
+  <button onclick="nextSlide()" class="mt-10 px-6 py-2 bg-pink-400 hover:bg-pink-500 text-white rounded-full shadow-md">Next</button>
+</section>
+
+<script>
+  function playVoiceNote() {
+    const audio = document.getElementById('voiceNote');
+    const subtitle = document.getElementById('subtitleBox');
+    audio.play();
+    subtitle.classList.remove('opacity-0');
+    subtitle.classList.add('opacity-100');
+  }
+</script>
   
 <!-- Slide 5: Promise Wall -->
 <section id="promise-wall" class="slide h-screen flex flex-col justify-center items-center text-center px-6 bg-gradient-to-b from-white to-rose-100">
@@ -245,6 +285,28 @@
       error.classList.remove('hidden');
     }
   };
+
+    function playVoiceNote() {
+    const voiceAudio = document.getElementById('voiceNote');
+    const bgAudio = document.getElementById('romanticMusic');
+    const subtitle = document.getElementById('subtitleBox');
+
+    // Fade background music down
+    if (!bgAudio.paused) {
+      const fadeOut = setInterval(() => {
+        if (bgAudio.volume > 0.1) {
+          bgAudio.volume -= 0.05;
+        } else {
+          bgAudio.volume = 0.1;
+          clearInterval(fadeOut);
+        }
+      }, 100);
+    }
+
+    voiceAudio.play();
+    subtitle.classList.remove('opacity-0');
+    subtitle.classList.add('opacity-100');
+  }
 </script>
   <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
   <div class="heart" style="left: 30%; animation-delay: 2s;">❤️</div>
