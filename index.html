@@ -234,23 +234,23 @@
     document.addEventListener('DOMContentLoaded', () => {
       const slides = document.querySelectorAll('.slide');
       let current = 0;
-function showSlide(index) {
-  const slides = document.querySelectorAll('.slide');
-  slides.forEach((s, i) => {
-    s.classList.toggle('active', i === index);
-  });
-}
 
-function nextSlide() {
-  const slides = document.querySelectorAll('.slide');
-  const currentSlide = slides[current];
-  
-  current = (current + 1) % slides.length;
-  const nextSlide = slides[current];
+      function showSlide(index) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('active', i === index);
+        });
+      }
 
-  showSlide(current);
+      window.nextSlide = function () {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      };
 
-  // Check if coming from voice note slide
+      window.restartSlides = function () {
+        current = 0;
+        showSlide(current);
+      };
+      // Check if coming from voice note slide
   if (currentSlide.id === "slide5") {
     const bgAudio = document.getElementById('romanticMusic');
     if (bgAudio) {
@@ -263,9 +263,6 @@ function nextSlide() {
           clearInterval(fadeIn);
         }
       }, 100);
-    }
-  }
-}
 
       window.downloadLetter = function () {
         const text = document.getElementById('letterText').innerText;
