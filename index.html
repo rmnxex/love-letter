@@ -250,19 +250,6 @@
         current = 0;
         showSlide(current);
       };
-      // Check if coming from voice note slide
-  if (currentSlide.id === "slide5") {
-    const bgAudio = document.getElementById('romanticMusic');
-    if (bgAudio) {
-      // Gradually fade music back up to volume 0.5
-      const fadeIn = setInterval(() => {
-        if (bgAudio.volume < 0.5) {
-          bgAudio.volume += 0.05;
-        } else {
-          bgAudio.volume = 0.5;
-          clearInterval(fadeIn);
-        }
-      }, 100);
 
       window.downloadLetter = function () {
         const text = document.getElementById('letterText').innerText;
